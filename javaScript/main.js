@@ -2,7 +2,6 @@ let player = 'X';
 let gameBoard = ['', '', '', '', '', '', '', '', ''];
 function changePlayer() {
     if (player === 'X') {
-        console.log('HRLLO');
         player = 'O';
     }    
     else {player = 'X'};
