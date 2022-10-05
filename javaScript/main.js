@@ -13,3 +13,10 @@ function changeBoardState(tile){
     gameBoard.splice(tile, 1, `${player}`);
 }
 
+function createDiv(clas, id, parent) {
+    let div = document.createElement('div');
+    div.setAttribute('id', id);
+    div.setAttribute('class', clas);
+    parent.appendChild(div);
+    return div;
+}

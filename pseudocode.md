@@ -54,5 +54,7 @@ on page load
         - each block/tile has a unique id
         - Starting at the left and stepping right
             - id 'tile0', id 'tile1', id 'tile2', id 'tile3', id 'tile4', id 'tile5', id 'tile6', id 'tile7', id 'tile8'
-            - 
+            
+function addElement()
+
 
