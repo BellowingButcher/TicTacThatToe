@@ -36,3 +36,12 @@ funtion changePlayer()
 function changeBoardState()
     - insert player into array
         - at selected players tile(index)
+
+function makeAMove()
+    - if tile is empty
+        - insert player into tile with changeBoardState(tile)
+            - using players tile choice as the parameter
+        - if checkWin is false
+            - run changePlayer()
+    - else endGame/declareWinner
+        
