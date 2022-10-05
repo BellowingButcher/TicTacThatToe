@@ -10,6 +10,10 @@ function changePlayer() {
 //     - insert player into array
 //         - at selected players tile(index)
 function changeBoardState(tile){
-    gameBoard.splice(tile, 1, player);
+    gameBoard.splice(tile, 1, `${player}`);
 }
 
+changeBoardState(3);
+console.log(gameBoard);
+changeBoardState(7);
+console.log(gameBoard);
