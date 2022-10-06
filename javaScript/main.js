@@ -10,9 +10,14 @@ function changePlayer() {
 // function changeBoardState()
 //     - insert player into array
 //         - at selected players tile(index)
-function changeBoardState(tile){
-    gameBoard.splice(tile, 1, `${player}`);
+
+
+function changeBoardState(elementID, currentPlayer){
+    gameBoard.splice(elementID, 1, currentPlayer);
 }
+// function changeBoardState({ index = ''}){
+//     gameBoard.splice(elementID, 1, currentPlayer);
+// }
 
 function createDiv(clas, id, parent) {
     let div = document.createElement('div');
@@ -22,10 +27,14 @@ function createDiv(clas, id, parent) {
     return div;
 }
 function drawBoard(){
-    let row1 = createDiv('row', 'row1', body)
+    let container1 = createDiv('container', 'mainConatain', body)
+    let row1 = createDiv('row', 'row1', container1);
     for(let i=0; i<=8; i++) {
-        createDiv('col-4', `col${i}`, row1);
-        document.getElementById(`col${i}`).textContent = 'EmptyBox';
+        createDiv('col-4', `${i}`, row1);
+        let element = document.getElementById(`${i}`);
+        element.textContent = 'EmptyBox';
+        element.addEventListener('click', makeAMove);    //run event target through function changeBoardState(event Target)
+            //then function changePlayer
     }
 }
 
@@ -33,5 +42,17 @@ function drawPage(){
     createDiv('h1', 'title', body)
     document.getElementById('title').textContent = 'Tick Tac That Toe';
     drawBoard();
+    
+}
+function makeAMove(){
+    //trying to call for the event target inside of the function
+    let target = event.target;
+    let id = target.id;
+    console.log(isNaN(id));
+    console.log(player);
+    //running into a scoping issue with the parameter player
+    changeBoardState(id, player);
+    console.log(gameBoard);
+    changePlayer();
 
 }
