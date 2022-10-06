@@ -41,7 +41,7 @@ function drawBoard(){
     for(let i=0; i<=8; i++) {
         createDiv('col-4', `${i}`, row1);
         let element = document.getElementById(`${i}`);
-        element.textContent = 'EmptyBox';
+        element.textContent = 'emptyDiv';
         element.addEventListener('click', makeAMove);    //run event target through function changeBoardState(event Target)
             //then function changePlayer
     }
@@ -64,23 +64,24 @@ function makeAMove(){
     // console.log(isNaN(id));
     // console.log(player);
     //running into a scoping issue with the parameter player
-    changeBoardState(id, player);
-    target.textContent = player;
     console.log(gameBoard);
     //if 
     //declare winner is true
-    if (declareWinner() === true) {
-        createDiv('row', 'results', resultElement);
-        document.getElementById('results').textContent = player + ' is the winner!';
-        //display a message of player(player is the variable) is the winner
-    }
+    //display a message of player(player is the variable) is the winner
     // console.log(player);
     // console.log('before IF', player);
-    if (gameBoard[id] === ' ' || gameBoard[id] === player){
+    if (gameBoard[id] === ' '){
+        changeBoardState(id, player);
+        
+        if (declareWinner() === true) {
+            createDiv('row', 'results', resultElement);
+            document.getElementById('results').textContent = player + ' is the winner!';
+        }
+        target.textContent = player;
         changePlayer();
         console.log('afterIF', player)
     }
-    console.log('afterElse', player);
+
 }
 
 function declareWinner(){
