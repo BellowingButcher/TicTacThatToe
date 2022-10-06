@@ -2,6 +2,11 @@ let player = 'X';
 let gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 const ogGameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 let body = document.getElementById('app');
+
+document.addEventListener('DOMContentLoaded', () => {
+    drawPage();
+})
+
 function changePlayer() {
     if (player === 'X') {
         player = 'O';
@@ -55,7 +60,7 @@ function resetBoard () {
 
     for(let i=0; i<=8; i++) {
         let element = document.getElementById(`${i}`);
-        element.textContent = 'emptyContainer';
+        element.textContent = 'emptyDiv';
     }
 
 }
@@ -73,7 +78,7 @@ function drawPage(){
     createDiv('h1', 'title', body)
     document.getElementById('title').textContent = 'Tick Tac That Toe';
     drawBoard();
-    
+    createButton();
     
 }
 function makeAMove(){
