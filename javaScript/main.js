@@ -57,6 +57,7 @@ function resetBoard () {
     console.log(gameBoard);
     let results = document.getElementById('results')
     results.remove();
+    player = 'X';
 
     for(let i=0; i<=8; i++) {
         let element = document.getElementById(`${i}`);
@@ -75,8 +76,10 @@ function createButton(){
 }
 
 function drawPage(){
-    createDiv('h1', 'title', body)
+    createDiv('h1', 'title', body);
+    createDiv('p', 'whosTurn', body);
     document.getElementById('title').textContent = 'Tick Tac That Toe';
+    document.getElementById('whosTurn').textContent = 'Player X goes first';
     drawBoard();
     createButton();
     
