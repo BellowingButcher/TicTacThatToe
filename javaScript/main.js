@@ -57,6 +57,7 @@ function makeAMove(){
     //trying to call for the event target inside of the function
     let target = event.target;
     let id = target.id;
+    let resultElement = document.getElementById('mainConatain');
     // console.log(target);
     // let clickCount = 0;
     // clickCount++;
@@ -65,8 +66,15 @@ function makeAMove(){
     //running into a scoping issue with the parameter player
     changeBoardState(id, player);
     console.log(gameBoard);
+    //if 
+    //declare winner is true
+    if (declareWinner() === true) {
+        createDiv('row', 'results', resultElement);
+        document.getElementById('results').textContent = player + ' is the winner!';
+        //display a message of player(player is the variable) is the winner
+    }
     // console.log(player);
-    console.log('before IF', player);
+    // console.log('before IF', player);
     if (gameBoard[id] === ' ' || gameBoard[id] === player){
         changePlayer();
         console.log('afterIF', player)
@@ -79,68 +87,69 @@ function declareWinner(){
         // console.log(gameBoard[i]);
         if (gameBoard[0] === 'X' && gameBoard[1] === 'X' && gameBoard[2] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[3] === 'X' && gameBoard[4] === 'X' && gameBoard[5] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[6] === 'X' && gameBoard[7] === 'X' && gameBoard[8] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[0] === 'X' && gameBoard[3] === 'X' && gameBoard[6] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[1] === 'X' && gameBoard[4] === 'X' && gameBoard[7] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[2] === 'X' && gameBoard[5] === 'X' && gameBoard[8] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[0] === 'X' && gameBoard[4] === 'X' && gameBoard[8] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[2] === 'X' && gameBoard[4] === 'X' && gameBoard[6] === 'X'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[0] === 'O' && gameBoard[1] === 'O' && gameBoard[2] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[3] === 'O' && gameBoard[4] === 'O' && gameBoard[5] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[6] === 'O' && gameBoard[7] === 'O' && gameBoard[8] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[0] === 'O' && gameBoard[3] === 'O' && gameBoard[6] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[1] === 'O' && gameBoard[4] === 'O' && gameBoard[7] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[2] === 'O' && gameBoard[5] === 'O' && gameBoard[8] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[0] === 'O' && gameBoard[4] === 'O' && gameBoard[8] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
         if (gameBoard[2] === 'O' && gameBoard[4] === 'O' && gameBoard[6] === 'O'){
             console.log('you got a winner');
-            return
+            return true
         }
+        else {return false}
 
     }
 }
