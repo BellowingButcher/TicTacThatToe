@@ -42,10 +42,10 @@ function createDiv(clas, id, parent) {
     return div;
 }
 function drawBoard(){
-    let container1 = createDiv('container', 'mainContain', body)
+    let container1 = createDiv('container text-center', 'mainContain', body)
     let row1 = createDiv('row', 'row1', container1);
     for(let i=0; i<=8; i++) {
-        createDiv('col-4', `${i}`, row1);
+        createDiv('col-4 border ', `${i}`, row1);
         let element = document.getElementById(`${i}`);
         element.textContent = 'emptyDiv';
         element.addEventListener('click', makeAMove);    //run event target through function changeBoardState(event Target)
@@ -77,8 +77,8 @@ function createButton(){
 }
 
 function drawPage(){
-    createDiv('h1', 'title', body);
-    createDiv('p', 'whosTurn', body);
+    createDiv('h1 text-center', 'title', body);
+    createDiv('p text-center', 'whosTurn', body);
     document.getElementById('title').textContent = 'Tick Tac That Toe';
     document.getElementById('whosTurn').textContent = 'Player X goes first';
     drawBoard();
