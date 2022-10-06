@@ -65,6 +65,7 @@ function makeAMove(){
     // console.log(player);
     //running into a scoping issue with the parameter player
     changeBoardState(id, player);
+    target.textContent = player;
     console.log(gameBoard);
     //if 
     //declare winner is true
