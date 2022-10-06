@@ -73,3 +73,74 @@ function makeAMove(){
     }
     console.log('afterElse', player);
 }
+
+function declareWinner(){
+    for(i of gameBoard) {
+        // console.log(gameBoard[i]);
+        if (gameBoard[0] === 'X' && gameBoard[1] === 'X' && gameBoard[2] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[3] === 'X' && gameBoard[4] === 'X' && gameBoard[5] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[6] === 'X' && gameBoard[7] === 'X' && gameBoard[8] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[0] === 'X' && gameBoard[3] === 'X' && gameBoard[6] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[1] === 'X' && gameBoard[4] === 'X' && gameBoard[7] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[2] === 'X' && gameBoard[5] === 'X' && gameBoard[8] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[0] === 'X' && gameBoard[4] === 'X' && gameBoard[8] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[2] === 'X' && gameBoard[4] === 'X' && gameBoard[6] === 'X'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[0] === 'O' && gameBoard[1] === 'O' && gameBoard[2] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[3] === 'O' && gameBoard[4] === 'O' && gameBoard[5] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[6] === 'O' && gameBoard[7] === 'O' && gameBoard[8] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[0] === 'O' && gameBoard[3] === 'O' && gameBoard[6] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[1] === 'O' && gameBoard[4] === 'O' && gameBoard[7] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[2] === 'O' && gameBoard[5] === 'O' && gameBoard[8] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[0] === 'O' && gameBoard[4] === 'O' && gameBoard[8] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+        if (gameBoard[2] === 'O' && gameBoard[4] === 'O' && gameBoard[6] === 'O'){
+            console.log('you got a winner');
+            return
+        }
+
+    }
+}
