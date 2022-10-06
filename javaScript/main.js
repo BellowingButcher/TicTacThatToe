@@ -1,5 +1,6 @@
 let player = 'X';
 let gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+const ogGameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 let body = document.getElementById('app');
 function changePlayer() {
     if (player === 'X') {
@@ -22,7 +23,7 @@ function changeBoardState(elementID, currentPlayer){
     // else if(gameBoard[elementID].textContent === ''){
     //     gameBoard.splice(elementID, 1, currentPlayer);
     // }
-    else (console.log('Element has already been chosen'));
+    
 }
 // function changeBoardState({ index = ''}){
 //     gameBoard.splice(elementID, 1, currentPlayer);
@@ -36,7 +37,7 @@ function createDiv(clas, id, parent) {
     return div;
 }
 function drawBoard(){
-    let container1 = createDiv('container', 'mainConatain', body)
+    let container1 = createDiv('container', 'mainContain', body)
     let row1 = createDiv('row', 'row1', container1);
     for(let i=0; i<=8; i++) {
         createDiv('col-4', `${i}`, row1);
@@ -46,25 +47,47 @@ function drawBoard(){
             //then function changePlayer
     }
 }
+function resetBoard () {
+    gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+    console.log(gameBoard);
+    let results = document.getElementById('results')
+    results.remove();
+
+    for(let i=0; i<=8; i++) {
+        let element = document.getElementById(`${i}`);
+        element.textContent = 'emptyContainer';
+    }
+
+}
+function createButton(){
+    let button = document.createElement('button');
+    document.getElementById('mainContain').appendChild(button);
+    button.textContent = 'ResetGame';
+    button.addEventListener('click', resetBoard);
+
+    
+
+}
 
 function drawPage(){
     createDiv('h1', 'title', body)
     document.getElementById('title').textContent = 'Tick Tac That Toe';
     drawBoard();
     
+    
 }
 function makeAMove(){
     //trying to call for the event target inside of the function
     let target = event.target;
     let id = target.id;
-    let resultElement = document.getElementById('mainConatain');
+    let resultElement = document.getElementById('mainContain');
     // console.log(target);
     // let clickCount = 0;
     // clickCount++;
     // console.log(isNaN(id));
     // console.log(player);
     //running into a scoping issue with the parameter player
-    console.log(gameBoard);
+    // console.log(gameBoard);
     //if 
     //declare winner is true
     //display a message of player(player is the variable) is the winner
@@ -76,10 +99,11 @@ function makeAMove(){
         if (declareWinner() === true) {
             createDiv('row', 'results', resultElement);
             document.getElementById('results').textContent = player + ' is the winner!';
+            return
         }
         target.textContent = player;
         changePlayer();
-        console.log('afterIF', player)
+        // console.log('afterIF', player)
     }
 
 }
