@@ -2,7 +2,7 @@ let player = 'X';
 let gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 const ogGameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 let body = document.getElementById('app');
-
+let clickCount = 0
 document.addEventListener('DOMContentLoaded', () => {
     drawPage();
 })
@@ -58,6 +58,7 @@ function resetBoard () {
     let results = document.getElementById('results')
     results.remove();
     player = 'X';
+    clickCount = 0;
 
     for(let i=0; i<=8; i++) {
         let element = document.getElementById(`${i}`);
@@ -91,7 +92,7 @@ function makeAMove(){
     let resultElement = document.getElementById('mainContain');
     // console.log(target);
     // let clickCount = 0;
-    // clickCount++;
+    clickCount++;
     // console.log(isNaN(id));
     // console.log(player);
     //running into a scoping issue with the parameter player
@@ -103,13 +104,18 @@ function makeAMove(){
     // console.log('before IF', player);
     if (gameBoard[id] === ' '){
         changeBoardState(id, player);
+        target.textContent = player;
         
         if (declareWinner() === true) {
             createDiv('row', 'results', resultElement);
             document.getElementById('results').textContent = player + ' is the winner!';
-            return
+            return;
         }
-        target.textContent = player;
+        if (clickCount >= 9) {
+            createDiv('row', 'results', resultElement);
+            document.getElementById('results').textContent = 'Its a CAT';
+            return;
+        }
         changePlayer();
         // console.log('afterIF', player)
     }
