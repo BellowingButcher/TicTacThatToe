@@ -72,10 +72,13 @@ function resetBoard () {
 
 }
 function createButton(){
+    let cont = document.getElementById('mainContain')
+    let row = createDiv('row', 'btnRow', cont);
+    createDiv('col', 'btnCol', row);
     let button = document.createElement('button');
-    document.getElementById('mainContain').appendChild(button);
+    row.appendChild(button);
     button.textContent = 'ResetGame';
-    button.setAttribute('class', 'btn btn-lg  shadow')
+    button.setAttribute('class', 'btn btn-lg w-50 shadow')
     button.addEventListener('click', resetBoard);
 
     
