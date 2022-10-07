@@ -184,7 +184,7 @@ function makeAMove(){
     // let clickCount = 0; this needed to be global
     clickCount++;
     //========================
-    //small failed section
+    //small pseudo session
     // console.log(isNaN(id));
     // console.log(player);
     //running into a scoping issue with the parameter player
@@ -202,12 +202,23 @@ function makeAMove(){
         changeBoardState(id, player);
         // change the targets text content to the current player(global varible)
         target.textContent = player;
+        target.removeEventListener('click', null)
         
         if (declareWinner() === true) {
             createDiv('row', 'results', resultElement);
             document.getElementById('results').textContent = player + ' is the winner!';
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             //remove eventListener from all tiles
-            removeEventListener();
+            //This is a for loop that incriments i 9 times
+            for(let i=0; i<=8; i++) {
+                //first it should point to the div with an id of 0
+                let element = document.getElementById(`${i}`);
+                //It does, I know because of this console log
+                console.log(element);
+                //This worked on removing event listeners on 205
+                //Im not sure why it isnt working here
+                element.removeEventListener('click', null);
+            }
             return;
         }
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -226,16 +237,19 @@ function makeAMove(){
 }
 //===========================================================================================================================================================================
 //function remove event Listeners
-function removeEventListener () {
-//loops 9 times
-    for(let i=0; i<=8; i++) {
-        //declare each individual element by its id
-        let element = document.getElementById(`${i}`);
-        //remove the event listener from that element
-        element.removeEventListener;
-    }   
-}
+// function removeEventListener () {
+// //loops 9 times
+//     for(let i=0; i<=8; i++) {
+//         //declare each individual element by its id
+//         console.log(element);
+//         //remove the event listener from that element
+//         element.removeEventListener('click', null);
+//     }   
+// }
 //===========================================================================================================================================================================
+// This is a bunch of if statements that check to see if any of the winning conditions have been met.  
+//It compares the current state of the gameBoard with hard-coded winning conditions
+//I want to refacter this at a latter time but there are more important matters at the current moment that I need to deal with
 function declareWinner(){
     for(i of gameBoard) {
         // console.log(gameBoard[i]);
