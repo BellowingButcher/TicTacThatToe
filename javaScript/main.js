@@ -183,7 +183,7 @@ function makeAMove(){
     //It is the parent element for the result div
     let resultElement = document.getElementById('mainContain');
     // console.log(target);
-    // let clickCount = 0; this needed to be global
+    //Incriment clickCount by 1 everytime this function is ran
     clickCount++;
     //========================
     //small pseudo session
@@ -204,34 +204,40 @@ function makeAMove(){
         changeBoardState(id, player);
         // change the targets text content to the current player(global varible)
         target.textContent = player;
-        // target.removeEventListener('click', null)
         
+        // if declareWinner returns true
         if (declareWinner() === true) {
             createDiv('row', 'results', resultElement);
+            //create the results div that diplays the winner
             document.getElementById('results').textContent = player + ' is the winner!';
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             //remove eventListener from all tiles
             //This is a for loop that incriments i 9 times
             for(let i=0; i<=8; i++) {
                 //first it should point to the div with an id of 0
                 let element = document.getElementById(`${i}`);
                 //It does, I know because of this console log
-                console.log(element);
-                //This worked on removing event listeners on 205
-                //Im not sure why it isnt working here
+                // console.log(element);
+                //removes eventListener from the
                 element.removeEventListener('click', makeAMove);
             }
+            //return will allow me to stop the rest of the make a move function
             return;
+
         }
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //found a bug with clickCount. you can have more clicks than there are selections on the board
+        //This is my draw condition
+        //If the variable clickCount is greater than or equal to 9
         if (clickCount >= 9) {
+            //Create the results div
             createDiv('row', 'results', resultElement);
-            document.getElementById('results').textContent = 'Its a CAT';
+            //Set div text content to the draw message
+            document.getElementById('results').textContent = 'You have Tic Tacked That Toe enough... It"s a tie';
             //remove eventListeners from all tiles
             removeEventListener();
+            //return to stop the process of the function
             return;
         }
+        //If either the win or the draw conditions aren't met
+        //Change the player from current to the next player
         changePlayer();
         // console.log('afterIF', player)
     }
