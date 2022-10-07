@@ -104,7 +104,7 @@ function drawBoard(){
         //Add an event listener to each element being created
         //listen for a click on an element
         //when clicked run makeAMove
-        element.addEventListener('click', makeAMove);
+        element.addEventListener('click', makeAMove, { once: true });
     }
 }
 
@@ -134,6 +134,8 @@ function resetBoard () {
     for(let i=0; i<=8; i++) {
         let element = document.getElementById(`${i}`);
         element.textContent = ' ';
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! point out during demoDay
+        element.addEventListener('click', makeAMove, { once: true });
     }
 
 }
@@ -202,7 +204,7 @@ function makeAMove(){
         changeBoardState(id, player);
         // change the targets text content to the current player(global varible)
         target.textContent = player;
-        target.removeEventListener('click', null)
+        // target.removeEventListener('click', null)
         
         if (declareWinner() === true) {
             createDiv('row', 'results', resultElement);
@@ -217,7 +219,7 @@ function makeAMove(){
                 console.log(element);
                 //This worked on removing event listeners on 205
                 //Im not sure why it isnt working here
-                element.removeEventListener('click', null);
+                element.removeEventListener('click', makeAMove);
             }
             return;
         }
