@@ -2,6 +2,7 @@ let player = 'X';
 let gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 const ogGameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 let body = document.getElementById('app');
+body.setAttribute('class', 'vh-100')
 let clickCount = 0
 document.addEventListener('DOMContentLoaded', () => {
     drawPage();
@@ -42,12 +43,12 @@ function createDiv(clas, id, parent) {
     return div;
 }
 function drawBoard(){
-    let container1 = createDiv('container text-center', 'mainContain', body)
-    let row1 = createDiv('row', 'row1', container1);
+    let container1 = createDiv('container text-center bg-secondary h-75', 'mainContain', body)
+    let row1 = createDiv('row h-50', 'row1', container1);
     for(let i=0; i<=8; i++) {
-        createDiv('col-4 border ', `${i}`, row1);
+        createDiv('col-4 shadow', `${i}`, row1);
         let element = document.getElementById(`${i}`);
-        element.textContent = 'emptyDiv';
+        element.textContent = '';
         element.addEventListener('click', makeAMove);    //run event target through function changeBoardState(event Target)
             //then function changePlayer
     }
@@ -56,13 +57,17 @@ function resetBoard () {
     gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
     console.log(gameBoard);
     let results = document.getElementById('results')
-    results.remove();
-    player = 'X';
+    //if results is not null 
+    if (results !== null){
+
+        results.remove();
+    }
+        player = 'X';
     clickCount = 0;
 
     for(let i=0; i<=8; i++) {
         let element = document.getElementById(`${i}`);
-        element.textContent = 'emptyDiv';
+        element.textContent = ' ';
     }
 
 }
@@ -70,6 +75,7 @@ function createButton(){
     let button = document.createElement('button');
     document.getElementById('mainContain').appendChild(button);
     button.textContent = 'ResetGame';
+    button.setAttribute('class', 'btn btn-lg  shadow')
     button.addEventListener('click', resetBoard);
 
     
